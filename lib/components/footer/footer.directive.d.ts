@@ -12,5 +12,5 @@ export declare class DatatableFooterDirective {
     _templateQuery: TemplateRef<any>;
     get template(): TemplateRef<any>;
     static ɵfac: i0.ɵɵFactoryDeclaration<DatatableFooterDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<DatatableFooterDirective, "ngx-datatable-footer", never, { "footerHeight": "footerHeight"; "totalMessage": "totalMessage"; "selectedMessage": "selectedMessage"; "pagerLeftArrowIcon": "pagerLeftArrowIcon"; "pagerRightArrowIcon": "pagerRightArrowIcon"; "pagerPreviousIcon": "pagerPreviousIcon"; "pagerNextIcon": "pagerNextIcon"; "_templateInput": "template"; }, {}, ["_templateQuery"]>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<DatatableFooterDirective, "ngx-datatable-footer", never, { "footerHeight": { "alias": "footerHeight"; "required": false; }; "totalMessage": { "alias": "totalMessage"; "required": false; }; "selectedMessage": { "alias": "selectedMessage"; "required": false; }; "pagerLeftArrowIcon": { "alias": "pagerLeftArrowIcon"; "required": false; }; "pagerRightArrowIcon": { "alias": "pagerRightArrowIcon"; "required": false; }; "pagerPreviousIcon": { "alias": "pagerPreviousIcon"; "required": false; }; "pagerNextIcon": { "alias": "pagerNextIcon"; "required": false; }; "_templateInput": { "alias": "template"; "required": false; }; }, {}, ["_templateQuery"], never, false, never>;
 }

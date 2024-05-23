@@ -16,6 +16,7 @@ export declare class DataTableSelectionComponent {
     selectionType: SelectionType;
     rowIdentity: any;
     selectCheck: any;
+    disableCheck: any;
     activate: EventEmitter<any>;
     select: EventEmitter<any>;
     prevIndex: number;
@@ -28,5 +29,5 @@ export declare class DataTableSelectionComponent {
     getRowSelected(row: any): boolean;
     getRowSelectedIdx(row: any, selected: any[]): number;
     static ɵfac: i0.ɵɵFactoryDeclaration<DataTableSelectionComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<DataTableSelectionComponent, "datatable-selection", never, { "rows": "rows"; "selected": "selected"; "selectEnabled": "selectEnabled"; "selectionType": "selectionType"; "rowIdentity": "rowIdentity"; "selectCheck": "selectCheck"; }, { "activate": "activate"; "select": "select"; }, never, ["*"]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DataTableSelectionComponent, "datatable-selection", never, { "rows": { "alias": "rows"; "required": false; }; "selected": { "alias": "selected"; "required": false; }; "selectEnabled": { "alias": "selectEnabled"; "required": false; }; "selectionType": { "alias": "selectionType"; "required": false; }; "rowIdentity": { "alias": "rowIdentity"; "required": false; }; "selectCheck": { "alias": "selectCheck"; "required": false; }; "disableCheck": { "alias": "disableCheck"; "required": false; }; }, { "activate": "activate"; "select": "select"; }, never, ["*"], false, never>;
 }

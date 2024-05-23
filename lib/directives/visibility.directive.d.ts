@@ -1,4 +1,4 @@
-import { EventEmitter, ElementRef, NgZone, OnInit, OnDestroy } from '@angular/core';
+import { ElementRef, EventEmitter, NgZone, OnDestroy, OnInit } from '@angular/core';
 import * as i0 from "@angular/core";
 /**
  * Visibility Observer Directive
@@ -23,5 +23,5 @@ export declare class VisibilityDirective implements OnInit, OnDestroy {
     onVisibilityChange(): void;
     runCheck(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<VisibilityDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<VisibilityDirective, "[visibilityObserver]", never, {}, { "visible": "visible"; }, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<VisibilityDirective, "[visibilityObserver]", never, {}, { "visible": "visible"; }, never, never, false, never>;
 }

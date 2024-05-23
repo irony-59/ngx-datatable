@@ -19,5 +19,5 @@ export declare class DataTableSummaryRowComponent implements OnChanges {
     private updateValues;
     private getSummaryFunction;
     static ɵfac: i0.ɵɵFactoryDeclaration<DataTableSummaryRowComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<DataTableSummaryRowComponent, "datatable-summary-row", never, { "rows": "rows"; "columns": "columns"; "rowHeight": "rowHeight"; "offsetX": "offsetX"; "innerWidth": "innerWidth"; }, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DataTableSummaryRowComponent, "datatable-summary-row", never, { "rows": { "alias": "rows"; "required": false; }; "columns": { "alias": "columns"; "required": false; }; "rowHeight": { "alias": "rowHeight"; "required": false; }; "offsetX": { "alias": "offsetX"; "required": false; }; "innerWidth": { "alias": "innerWidth"; "required": false; }; }, {}, never, never, false, never>;
 }

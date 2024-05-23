@@ -6,7 +6,7 @@ import * as i0 from "@angular/core";
  */
 export declare class ColumnChangesService {
     private columnInputChanges;
-    get columnInputChanges$(): Observable<void>;
+    get columnInputChanges$(): Observable<undefined>;
     onInputChange(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<ColumnChangesService, never>;
     static ɵprov: i0.ɵɵInjectableDeclaration<ColumnChangesService>;

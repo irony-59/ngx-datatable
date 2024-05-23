@@ -24,5 +24,5 @@ export declare class DataTablePagerComponent {
     selectPage(page: number): void;
     calcPages(page?: number): any[];
     static ɵfac: i0.ɵɵFactoryDeclaration<DataTablePagerComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<DataTablePagerComponent, "datatable-pager", never, { "pagerLeftArrowIcon": "pagerLeftArrowIcon"; "pagerRightArrowIcon": "pagerRightArrowIcon"; "pagerPreviousIcon": "pagerPreviousIcon"; "pagerNextIcon": "pagerNextIcon"; "size": "size"; "count": "count"; "page": "page"; }, { "change": "change"; }, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DataTablePagerComponent, "datatable-pager", never, { "pagerLeftArrowIcon": { "alias": "pagerLeftArrowIcon"; "required": false; }; "pagerRightArrowIcon": { "alias": "pagerRightArrowIcon"; "required": false; }; "pagerPreviousIcon": { "alias": "pagerPreviousIcon"; "required": false; }; "pagerNextIcon": { "alias": "pagerNextIcon"; "required": false; }; "size": { "alias": "size"; "required": false; }; "count": { "alias": "count"; "required": false; }; "page": { "alias": "page"; "required": false; }; }, { "change": "change"; }, never, never, false, never>;
 }

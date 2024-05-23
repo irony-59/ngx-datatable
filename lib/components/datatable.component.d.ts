@@ -1,9 +1,10 @@
-import { ElementRef, EventEmitter, OnInit, QueryList, AfterViewInit, DoCheck, KeyValueDiffers, KeyValueDiffer, ChangeDetectorRef } from '@angular/core';
+import { AfterContentInit, AfterViewInit, ChangeDetectorRef, DoCheck, ElementRef, EventEmitter, KeyValueDiffer, KeyValueDiffers, OnDestroy, OnInit, QueryList } from '@angular/core';
 import { DatatableGroupHeaderDirective } from './body/body-group-header.directive';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { INgxDatatableConfig } from '../ngx-datatable.module';
 import { TableColumn } from '../types/table-column.type';
 import { ColumnMode } from '../types/column-mode.type';
+import { DragEventData } from '../types/drag-events.type';
 import { SelectionType } from '../types/selection.type';
 import { SortType } from '../types/sort.type';
 import { ContextmenuType } from '../types/contextmenu.type';
@@ -16,7 +17,7 @@ import { ScrollbarHelper } from '../services/scrollbar-helper.service';
 import { ColumnChangesService } from '../services/column-changes.service';
 import { DimensionsHelper } from '../services/dimensions-helper.service';
 import * as i0 from "@angular/core";
-export declare class DatatableComponent implements OnInit, DoCheck, AfterViewInit {
+export declare class DatatableComponent implements OnInit, DoCheck, AfterViewInit, AfterContentInit, OnDestroy {
     private scrollbarHelper;
     private dimensionsHelper;
     private cd;
@@ -73,6 +74,13 @@ export declare class DatatableComponent implements OnInit, DoCheck, AfterViewIni
      * Enable vertical scrollbars
      */
     scrollbarV: boolean;
+    /**
+     * Enable vertical scrollbars dynamically on demand.
+     * Property `scrollbarV` needs to be set `true` too.
+     * Width that is gained when no scrollbar is needed
+     * is added to the inner table width.
+     */
+    scrollbarVDynamic: boolean;
     /**
      * Enable horz scrollbars
      */
@@ -136,6 +144,12 @@ export declare class DatatableComponent implements OnInit, DoCheck, AfterViewIni
      * Default value: `false`
      */
     loadingIndicator: boolean;
+    /**
+     * Show ghost loaders on each cell.
+     * Default value: `false`
+     */
+    set ghostLoadingIndicator(val: boolean);
+    get ghostLoadingIndicator(): boolean;
     /**
      * Type of row selection. Options are:
      *
@@ -249,6 +263,20 @@ export declare class DatatableComponent implements OnInit, DoCheck, AfterViewIni
      */
     summaryPosition: string;
     /**
+     * A function you can use to check whether you want
+     * to disable a row. Example:
+     *
+     *    (row) => {
+     *      return row.name !== 'Ethel Price';
+     *    }
+     */
+    disableRowCheck: (row: any) => boolean;
+    /**
+     * A flag to enable drag behavior of native HTML5 drag and drop API on rows.
+     * If set to true, {@link rowDragEvents} will emit dragstart and dragend events.
+     */
+    rowDraggable: boolean;
+    /**
      * Body was scrolled typically in a `scrollbarV:true` scenario.
      */
     scroll: EventEmitter<any>;
@@ -290,6 +318,12 @@ export declare class DatatableComponent implements OnInit, DoCheck, AfterViewIni
      * A row was expanded ot collapsed for tree
      */
     treeAction: EventEmitter<any>;
+    /**
+     * Emits HTML5 native drag events.
+     * Only emits dragenter, dragover, drop events by default.
+     * Set {@link rowDraggble} to true for dragstart and dragend.
+     */
+    rowDragEvents: EventEmitter<DragEventData>;
     /**
      * CSS class applied if the header height if fixed height.
      */
@@ -380,7 +414,7 @@ export declare class DatatableComponent implements OnInit, DoCheck, AfterViewIni
     pageSize: number;
     bodyHeight: number;
     rowCount: number;
-    rowDiffer: KeyValueDiffer<{}, {}>;
+    rowDiffer: KeyValueDiffer<unknown, unknown>;
     _offsetX: BehaviorSubject<number>;
     _limit: number | undefined;
     _count: number;
@@ -392,6 +426,7 @@ export declare class DatatableComponent implements OnInit, DoCheck, AfterViewIni
     _columns: TableColumn[];
     _columnTemplates: QueryList<DataTableColumnDirective>;
     _subscriptions: Subscription[];
+    _ghostLoadingIndicator: boolean;
     constructor(scrollbarHelper: ScrollbarHelper, dimensionsHelper: DimensionsHelper, cd: ChangeDetectorRef, element: ElementRef, differs: KeyValueDiffers, columnChangesService: ColumnChangesService, configuration: INgxDatatableConfig);
     /**
      * Lifecycle hook that is called after data-bound
@@ -493,6 +528,7 @@ export declare class DatatableComponent implements OnInit, DoCheck, AfterViewIni
      * The header triggered a column resize event.
      */
     onColumnResize({ column, newValue }: any): void;
+    onColumnResizing({ column, newValue }: any): void;
     /**
      * The header triggered a column re-order event.
      */
@@ -521,5 +557,5 @@ export declare class DatatableComponent implements OnInit, DoCheck, AfterViewIni
     private listenForColumnInputChanges;
     private sortInternalRows;
     static ɵfac: i0.ɵɵFactoryDeclaration<DatatableComponent, [{ skipSelf: true; }, { skipSelf: true; }, null, null, null, null, { optional: true; }]>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<DatatableComponent, "ngx-datatable", never, { "targetMarkerTemplate": "targetMarkerTemplate"; "rows": "rows"; "groupRowsBy": "groupRowsBy"; "groupedRows": "groupedRows"; "columns": "columns"; "selected": "selected"; "scrollbarV": "scrollbarV"; "scrollbarH": "scrollbarH"; "rowHeight": "rowHeight"; "columnMode": "columnMode"; "headerHeight": "headerHeight"; "footerHeight": "footerHeight"; "externalPaging": "externalPaging"; "externalSorting": "externalSorting"; "limit": "limit"; "count": "count"; "offset": "offset"; "loadingIndicator": "loadingIndicator"; "selectionType": "selectionType"; "reorderable": "reorderable"; "swapColumns": "swapColumns"; "sortType": "sortType"; "sorts": "sorts"; "cssClasses": "cssClasses"; "messages": "messages"; "rowClass": "rowClass"; "selectCheck": "selectCheck"; "displayCheck": "displayCheck"; "groupExpansionDefault": "groupExpansionDefault"; "trackByProp": "trackByProp"; "selectAllRowsOnPage": "selectAllRowsOnPage"; "virtualization": "virtualization"; "treeFromRelation": "treeFromRelation"; "treeToRelation": "treeToRelation"; "summaryRow": "summaryRow"; "summaryHeight": "summaryHeight"; "summaryPosition": "summaryPosition"; "rowIdentity": "rowIdentity"; }, { "scroll": "scroll"; "activate": "activate"; "select": "select"; "sort": "sort"; "page": "page"; "reorder": "reorder"; "resize": "resize"; "tableContextmenu": "tableContextmenu"; "treeAction": "treeAction"; }, ["rowDetail", "groupHeader", "footer", "columnTemplates"], never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DatatableComponent, "ngx-datatable", never, { "targetMarkerTemplate": { "alias": "targetMarkerTemplate"; "required": false; }; "rows": { "alias": "rows"; "required": false; }; "groupRowsBy": { "alias": "groupRowsBy"; "required": false; }; "groupedRows": { "alias": "groupedRows"; "required": false; }; "columns": { "alias": "columns"; "required": false; }; "selected": { "alias": "selected"; "required": false; }; "scrollbarV": { "alias": "scrollbarV"; "required": false; }; "scrollbarVDynamic": { "alias": "scrollbarVDynamic"; "required": false; }; "scrollbarH": { "alias": "scrollbarH"; "required": false; }; "rowHeight": { "alias": "rowHeight"; "required": false; }; "columnMode": { "alias": "columnMode"; "required": false; }; "headerHeight": { "alias": "headerHeight"; "required": false; }; "footerHeight": { "alias": "footerHeight"; "required": false; }; "externalPaging": { "alias": "externalPaging"; "required": false; }; "externalSorting": { "alias": "externalSorting"; "required": false; }; "limit": { "alias": "limit"; "required": false; }; "count": { "alias": "count"; "required": false; }; "offset": { "alias": "offset"; "required": false; }; "loadingIndicator": { "alias": "loadingIndicator"; "required": false; }; "ghostLoadingIndicator": { "alias": "ghostLoadingIndicator"; "required": false; }; "selectionType": { "alias": "selectionType"; "required": false; }; "reorderable": { "alias": "reorderable"; "required": false; }; "swapColumns": { "alias": "swapColumns"; "required": false; }; "sortType": { "alias": "sortType"; "required": false; }; "sorts": { "alias": "sorts"; "required": false; }; "cssClasses": { "alias": "cssClasses"; "required": false; }; "messages": { "alias": "messages"; "required": false; }; "rowClass": { "alias": "rowClass"; "required": false; }; "selectCheck": { "alias": "selectCheck"; "required": false; }; "displayCheck": { "alias": "displayCheck"; "required": false; }; "groupExpansionDefault": { "alias": "groupExpansionDefault"; "required": false; }; "trackByProp": { "alias": "trackByProp"; "required": false; }; "selectAllRowsOnPage": { "alias": "selectAllRowsOnPage"; "required": false; }; "virtualization": { "alias": "virtualization"; "required": false; }; "treeFromRelation": { "alias": "treeFromRelation"; "required": false; }; "treeToRelation": { "alias": "treeToRelation"; "required": false; }; "summaryRow": { "alias": "summaryRow"; "required": false; }; "summaryHeight": { "alias": "summaryHeight"; "required": false; }; "summaryPosition": { "alias": "summaryPosition"; "required": false; }; "disableRowCheck": { "alias": "disableRowCheck"; "required": false; }; "rowDraggable": { "alias": "rowDraggable"; "required": false; }; "rowIdentity": { "alias": "rowIdentity"; "required": false; }; }, { "scroll": "scroll"; "activate": "activate"; "select": "select"; "sort": "sort"; "page": "page"; "reorder": "reorder"; "resize": "resize"; "tableContextmenu": "tableContextmenu"; "treeAction": "treeAction"; "rowDragEvents": "rowDragEvents"; }, ["rowDetail", "groupHeader", "footer", "columnTemplates"], ["[loading-indicator]", "[empty-content]"], false, never>;
 }

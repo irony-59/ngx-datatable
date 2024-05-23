@@ -26,5 +26,5 @@ export declare class DatatableRowDetailDirective {
      */
     collapseAllRows(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<DatatableRowDetailDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<DatatableRowDetailDirective, "ngx-datatable-row-detail", never, { "rowHeight": "rowHeight"; "_templateInput": "template"; }, { "toggle": "toggle"; }, ["_templateQuery"]>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<DatatableRowDetailDirective, "ngx-datatable-row-detail", never, { "rowHeight": { "alias": "rowHeight"; "required": false; }; "_templateInput": { "alias": "template"; "required": false; }; }, { "toggle": "toggle"; }, ["_templateQuery"], never, false, never>;
 }

@@ -1,5 +1,5 @@
 import { TableColumnProp } from '../types/table-column.type';
-export declare type ValueGetter = (obj: any, prop: TableColumnProp) => any;
+export type ValueGetter = (obj: any, prop: TableColumnProp) => any;
 /**
  * Always returns the empty string ''
  */

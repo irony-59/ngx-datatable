@@ -4,5 +4,5 @@ export declare class DatatableGroupHeaderTemplateDirective {
     template: TemplateRef<any>;
     constructor(template: TemplateRef<any>);
     static ɵfac: i0.ɵɵFactoryDeclaration<DatatableGroupHeaderTemplateDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<DatatableGroupHeaderTemplateDirective, "[ngx-datatable-group-header-template]", never, {}, {}, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<DatatableGroupHeaderTemplateDirective, "[ngx-datatable-group-header-template]", never, {}, {}, never, never, false, never>;
 }

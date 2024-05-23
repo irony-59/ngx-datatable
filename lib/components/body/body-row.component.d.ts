@@ -1,6 +1,7 @@
-import { ElementRef, KeyValueDiffers, EventEmitter, ChangeDetectorRef, DoCheck } from '@angular/core';
+import { ChangeDetectorRef, DoCheck, ElementRef, EventEmitter, KeyValueDiffers } from '@angular/core';
 import { TreeStatus } from './body-cell.component';
 import { ScrollbarHelper } from '../../services/scrollbar-helper.service';
+import { BehaviorSubject } from 'rxjs';
 import * as i0 from "@angular/core";
 export declare class DataTableBodyRowComponent implements DoCheck {
     private differs;
@@ -18,6 +19,8 @@ export declare class DataTableBodyRowComponent implements DoCheck {
     rowIndex: number;
     displayCheck: any;
     treeStatus: TreeStatus;
+    ghostLoadingIndicator: boolean;
+    disable$: BehaviorSubject<boolean>;
     set offsetX(val: number);
     get offsetX(): number;
     get cssClass(): string;
@@ -32,7 +35,7 @@ export declare class DataTableBodyRowComponent implements DoCheck {
     _columns: any[];
     _innerWidth: number;
     _groupStyles: {
-        [prop: string]: {};
+        [prop: string]: unknown;
     };
     private _rowDiffer;
     constructor(differs: KeyValueDiffers, scrollbarHelper: ScrollbarHelper, cd: ChangeDetectorRef, element: ElementRef);
@@ -49,5 +52,5 @@ export declare class DataTableBodyRowComponent implements DoCheck {
     recalculateColumns(val?: any[]): void;
     onTreeAction(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<DataTableBodyRowComponent, [null, { skipSelf: true; }, null, null]>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<DataTableBodyRowComponent, "datatable-body-row", never, { "columns": "columns"; "innerWidth": "innerWidth"; "expanded": "expanded"; "rowClass": "rowClass"; "row": "row"; "group": "group"; "isSelected": "isSelected"; "rowIndex": "rowIndex"; "displayCheck": "displayCheck"; "treeStatus": "treeStatus"; "offsetX": "offsetX"; "rowHeight": "rowHeight"; }, { "activate": "activate"; "treeAction": "treeAction"; }, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DataTableBodyRowComponent, "datatable-body-row", never, { "columns": { "alias": "columns"; "required": false; }; "innerWidth": { "alias": "innerWidth"; "required": false; }; "expanded": { "alias": "expanded"; "required": false; }; "rowClass": { "alias": "rowClass"; "required": false; }; "row": { "alias": "row"; "required": false; }; "group": { "alias": "group"; "required": false; }; "isSelected": { "alias": "isSelected"; "required": false; }; "rowIndex": { "alias": "rowIndex"; "required": false; }; "displayCheck": { "alias": "displayCheck"; "required": false; }; "treeStatus": { "alias": "treeStatus"; "required": false; }; "ghostLoadingIndicator": { "alias": "ghostLoadingIndicator"; "required": false; }; "disable$": { "alias": "disable$"; "required": false; }; "offsetX": { "alias": "offsetX"; "required": false; }; "rowHeight": { "alias": "rowHeight"; "required": false; }; }, { "activate": "activate"; "treeAction": "treeAction"; }, never, never, false, never>;
 }

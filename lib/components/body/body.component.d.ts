@@ -1,13 +1,17 @@
-import { EventEmitter, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ScrollerComponent } from './scroller.component';
 import { SelectionType } from '../../types/selection.type';
 import { RowHeightCache } from '../../utils/row-height-cache';
+import { DragEventData } from '../../types/drag-events.type';
 import * as i0 from "@angular/core";
 export declare class DataTableBodyComponent implements OnInit, OnDestroy {
-    private cd;
+    cd: ChangeDetectorRef;
     scrollbarV: boolean;
     scrollbarH: boolean;
     loadingIndicator: boolean;
+    private _ghostLoadingIndicator;
+    set ghostLoadingIndicator(val: boolean);
+    get ghostLoadingIndicator(): boolean;
     externalPaging: boolean;
     rowHeight: number | 'auto' | ((row?: any) => number);
     offsetX: number;
@@ -29,6 +33,9 @@ export declare class DataTableBodyComponent implements OnInit, OnDestroy {
     summaryRow: boolean;
     summaryPosition: string;
     summaryHeight: number;
+    rowDraggable: boolean;
+    rowDragEvents: EventEmitter<DragEventData>;
+    disableRowCheck: (row: any) => boolean;
     set pageSize(val: number);
     get pageSize(): number;
     set rows(val: any[]);
@@ -79,6 +86,9 @@ export declare class DataTableBodyComponent implements OnInit, OnDestroy {
     _rowCount: number;
     _offset: number;
     _pageSize: number;
+    _offsetEvent: number;
+    private _draggedRow;
+    private _draggedRowElement;
     /**
      * Creates an instance of DataTableBodyComponent.
      */
@@ -140,11 +150,12 @@ export declare class DataTableBodyComponent implements OnInit, OnDestroy {
      * heights of the rows before it (i.e. row0 and row1).
      *
      * @param rows the row that needs to be placed in the 2D space.
+     * @param index for ghost cells in order to get correct position of ghost row
      * @returns the CSS3 style to be applied
      *
      * @memberOf DataTableBodyComponent
      */
-    getRowsStyles(rows: any): any;
+    getRowsStyles(rows: any, index?: number): any;
     /**
      * Calculate bottom summary row offset for scrollbar mode.
      * For more information about cache and offset calculation
@@ -207,6 +218,12 @@ export declare class DataTableBodyComponent implements OnInit, OnDestroy {
      */
     getRowIndex(row: any): number;
     onTreeAction(row: any): void;
+    dragOver(event: DragEvent, dropRow: any): void;
+    drag(event: DragEvent, dragRow: any, rowComponent: any): void;
+    drop(event: DragEvent, dropRow: any, rowComponent: any): void;
+    dragEnter(event: DragEvent, dropRow: any, rowComponent: any): void;
+    dragLeave(event: DragEvent, dropRow: any, rowComponent: any): void;
+    dragEnd(event: DragEvent, dragRow: any): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<DataTableBodyComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<DataTableBodyComponent, "datatable-body", never, { "scrollbarV": "scrollbarV"; "scrollbarH": "scrollbarH"; "loadingIndicator": "loadingIndicator"; "externalPaging": "externalPaging"; "rowHeight": "rowHeight"; "offsetX": "offsetX"; "emptyMessage": "emptyMessage"; "selectionType": "selectionType"; "selected": "selected"; "rowIdentity": "rowIdentity"; "rowDetail": "rowDetail"; "groupHeader": "groupHeader"; "selectCheck": "selectCheck"; "displayCheck": "displayCheck"; "trackByProp": "trackByProp"; "rowClass": "rowClass"; "groupedRows": "groupedRows"; "groupExpansionDefault": "groupExpansionDefault"; "innerWidth": "innerWidth"; "groupRowsBy": "groupRowsBy"; "virtualization": "virtualization"; "summaryRow": "summaryRow"; "summaryPosition": "summaryPosition"; "summaryHeight": "summaryHeight"; "pageSize": "pageSize"; "rows": "rows"; "columns": "columns"; "offset": "offset"; "rowCount": "rowCount"; "bodyHeight": "bodyHeight"; }, { "scroll": "scroll"; "page": "page"; "activate": "activate"; "select": "select"; "detailToggle": "detailToggle"; "rowContextmenu": "rowContextmenu"; "treeAction": "treeAction"; }, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DataTableBodyComponent, "datatable-body", never, { "scrollbarV": { "alias": "scrollbarV"; "required": false; }; "scrollbarH": { "alias": "scrollbarH"; "required": false; }; "loadingIndicator": { "alias": "loadingIndicator"; "required": false; }; "ghostLoadingIndicator": { "alias": "ghostLoadingIndicator"; "required": false; }; "externalPaging": { "alias": "externalPaging"; "required": false; }; "rowHeight": { "alias": "rowHeight"; "required": false; }; "offsetX": { "alias": "offsetX"; "required": false; }; "emptyMessage": { "alias": "emptyMessage"; "required": false; }; "selectionType": { "alias": "selectionType"; "required": false; }; "selected": { "alias": "selected"; "required": false; }; "rowIdentity": { "alias": "rowIdentity"; "required": false; }; "rowDetail": { "alias": "rowDetail"; "required": false; }; "groupHeader": { "alias": "groupHeader"; "required": false; }; "selectCheck": { "alias": "selectCheck"; "required": false; }; "displayCheck": { "alias": "displayCheck"; "required": false; }; "trackByProp": { "alias": "trackByProp"; "required": false; }; "rowClass": { "alias": "rowClass"; "required": false; }; "groupedRows": { "alias": "groupedRows"; "required": false; }; "groupExpansionDefault": { "alias": "groupExpansionDefault"; "required": false; }; "innerWidth": { "alias": "innerWidth"; "required": false; }; "groupRowsBy": { "alias": "groupRowsBy"; "required": false; }; "virtualization": { "alias": "virtualization"; "required": false; }; "summaryRow": { "alias": "summaryRow"; "required": false; }; "summaryPosition": { "alias": "summaryPosition"; "required": false; }; "summaryHeight": { "alias": "summaryHeight"; "required": false; }; "rowDraggable": { "alias": "rowDraggable"; "required": false; }; "rowDragEvents": { "alias": "rowDragEvents"; "required": false; }; "disableRowCheck": { "alias": "disableRowCheck"; "required": false; }; "pageSize": { "alias": "pageSize"; "required": false; }; "rows": { "alias": "rows"; "required": false; }; "columns": { "alias": "columns"; "required": false; }; "offset": { "alias": "offset"; "required": false; }; "rowCount": { "alias": "rowCount"; "required": false; }; "bodyHeight": { "alias": "bodyHeight"; "required": false; }; }, { "scroll": "scroll"; "page": "page"; "activate": "activate"; "select": "select"; "detailToggle": "detailToggle"; "rowContextmenu": "rowContextmenu"; "treeAction": "treeAction"; }, never, ["[loading-indicator]", "[empty-content]"], false, never>;
 }

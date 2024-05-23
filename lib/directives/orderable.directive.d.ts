@@ -1,4 +1,4 @@
-import { EventEmitter, QueryList, KeyValueDiffers, AfterContentInit, OnDestroy } from '@angular/core';
+import { AfterContentInit, EventEmitter, KeyValueDiffers, OnDestroy, QueryList } from '@angular/core';
 import { DraggableDirective } from './draggable.directive';
 import * as i0 from "@angular/core";
 export declare class OrderableDirective implements AfterContentInit, OnDestroy {
@@ -19,5 +19,5 @@ export declare class OrderableDirective implements AfterContentInit, OnDestroy {
     isTarget(model: any, event: any): any;
     private createMapDiffs;
     static ɵfac: i0.ɵɵFactoryDeclaration<OrderableDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<OrderableDirective, "[orderable]", never, {}, { "reorder": "reorder"; "targetChanged": "targetChanged"; }, ["draggables"]>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<OrderableDirective, "[orderable]", never, {}, { "reorder": "reorder"; "targetChanged": "targetChanged"; }, ["draggables"], never, false, never>;
 }

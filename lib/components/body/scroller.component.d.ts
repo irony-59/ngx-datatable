@@ -1,4 +1,4 @@
-import { ElementRef, EventEmitter, Renderer2, NgZone, OnInit, OnDestroy } from '@angular/core';
+import { ElementRef, EventEmitter, NgZone, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import * as i0 from "@angular/core";
 export declare class ScrollerComponent implements OnInit, OnDestroy {
     private ngZone;
@@ -12,16 +12,16 @@ export declare class ScrollerComponent implements OnInit, OnDestroy {
     scrollXPos: number;
     prevScrollYPos: number;
     prevScrollXPos: number;
-    element: any;
-    parentElement: any;
+    element: HTMLElement;
+    parentElement: HTMLElement;
     onScrollListener: any;
     private _scrollEventListener;
-    constructor(ngZone: NgZone, element: ElementRef, renderer: Renderer2);
+    constructor(ngZone: NgZone, element: ElementRef<HTMLElement>, renderer: Renderer2);
     ngOnInit(): void;
     ngOnDestroy(): void;
     setOffset(offsetY: number): void;
     onScrolled(event: MouseEvent): void;
     updateOffset(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<ScrollerComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<ScrollerComponent, "datatable-scroller", never, { "scrollbarV": "scrollbarV"; "scrollbarH": "scrollbarH"; "scrollHeight": "scrollHeight"; "scrollWidth": "scrollWidth"; }, { "scroll": "scroll"; }, never, ["*"]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ScrollerComponent, "datatable-scroller", never, { "scrollbarV": { "alias": "scrollbarV"; "required": false; }; "scrollbarH": { "alias": "scrollbarH"; "required": false; }; "scrollHeight": { "alias": "scrollHeight"; "required": false; }; "scrollWidth": { "alias": "scrollWidth"; "required": false; }; }, { "scroll": "scroll"; }, never, ["*"], false, never>;
 }

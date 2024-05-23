@@ -25,5 +25,5 @@ export declare class DatatableGroupHeaderDirective {
      */
     collapseAllGroups(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<DatatableGroupHeaderDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<DatatableGroupHeaderDirective, "ngx-datatable-group-header", never, { "rowHeight": "rowHeight"; "_templateInput": "template"; }, { "toggle": "toggle"; }, ["_templateQuery"]>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<DatatableGroupHeaderDirective, "ngx-datatable-group-header", never, { "rowHeight": { "alias": "rowHeight"; "required": false; }; "_templateInput": { "alias": "template"; "required": false; }; }, { "toggle": "toggle"; }, ["_templateQuery"], never, false, never>;
 }

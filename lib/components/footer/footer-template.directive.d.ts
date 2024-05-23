@@ -4,5 +4,5 @@ export declare class DataTableFooterTemplateDirective {
     template: TemplateRef<any>;
     constructor(template: TemplateRef<any>);
     static ɵfac: i0.ɵɵFactoryDeclaration<DataTableFooterTemplateDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<DataTableFooterTemplateDirective, "[ngx-datatable-footer-template]", never, {}, {}, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<DataTableFooterTemplateDirective, "[ngx-datatable-footer-template]", never, {}, {}, never, never, false, never>;
 }

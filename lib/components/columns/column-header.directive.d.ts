@@ -4,5 +4,5 @@ export declare class DataTableColumnHeaderDirective {
     template: TemplateRef<any>;
     constructor(template: TemplateRef<any>);
     static ɵfac: i0.ɵɵFactoryDeclaration<DataTableColumnHeaderDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<DataTableColumnHeaderDirective, "[ngx-datatable-header-template]", never, {}, {}, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<DataTableColumnHeaderDirective, "[ngx-datatable-header-template]", never, {}, {}, never, never, false, never>;
 }

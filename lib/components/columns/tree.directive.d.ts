@@ -4,5 +4,5 @@ export declare class DataTableColumnCellTreeToggle {
     template: TemplateRef<any>;
     constructor(template: TemplateRef<any>);
     static ɵfac: i0.ɵɵFactoryDeclaration<DataTableColumnCellTreeToggle, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<DataTableColumnCellTreeToggle, "[ngx-datatable-tree-toggle]", never, {}, {}, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<DataTableColumnCellTreeToggle, "[ngx-datatable-tree-toggle]", never, {}, {}, never, never, false, never>;
 }

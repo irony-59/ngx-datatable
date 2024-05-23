@@ -1,4 +1,4 @@
-import { ElementRef, EventEmitter, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
+import { ElementRef, EventEmitter, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import * as i0 from "@angular/core";
 /**
@@ -31,5 +31,5 @@ export declare class DraggableDirective implements OnDestroy, OnChanges {
     }): void;
     private _destroySubscription;
     static ɵfac: i0.ɵɵFactoryDeclaration<DraggableDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<DraggableDirective, "[draggable]", never, { "dragEventTarget": "dragEventTarget"; "dragModel": "dragModel"; "dragX": "dragX"; "dragY": "dragY"; }, { "dragStart": "dragStart"; "dragging": "dragging"; "dragEnd": "dragEnd"; }, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<DraggableDirective, "[draggable]", never, { "dragEventTarget": { "alias": "dragEventTarget"; "required": false; }; "dragModel": { "alias": "dragModel"; "required": false; }; "dragX": { "alias": "dragX"; "required": false; }; "dragY": { "alias": "dragY"; "required": false; }; }, { "dragStart": "dragStart"; "dragging": "dragging"; "dragEnd": "dragEnd"; }, never, never, false, never>;
 }

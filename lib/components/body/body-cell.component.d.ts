@@ -1,11 +1,14 @@
-import { ChangeDetectorRef, EventEmitter, ElementRef, ViewContainerRef, OnDestroy, DoCheck } from '@angular/core';
+import { ChangeDetectorRef, DoCheck, ElementRef, EventEmitter, OnDestroy, ViewContainerRef } from '@angular/core';
 import { TableColumn } from '../../types/table-column.type';
 import { SortDirection } from '../../types/sort-direction.type';
 import * as i0 from "@angular/core";
-export declare type TreeStatus = 'collapsed' | 'expanded' | 'loading' | 'disabled';
+export type TreeStatus = 'collapsed' | 'expanded' | 'loading' | 'disabled';
 export declare class DataTableBodyCellComponent implements DoCheck, OnDestroy {
     private cd;
     displayCheck: (row: any, column?: TableColumn, value?: any) => boolean;
+    _disable$: any;
+    set disable$(val: any);
+    get disable$(): any;
     set group(group: any);
     get group(): any;
     set rowHeight(val: number);
@@ -24,9 +27,11 @@ export declare class DataTableBodyCellComponent implements DoCheck, OnDestroy {
     get sorts(): any[];
     set treeStatus(status: TreeStatus);
     get treeStatus(): TreeStatus;
+    ghostLoadingIndicator: boolean;
     activate: EventEmitter<any>;
     treeAction: EventEmitter<any>;
     cellTemplate: ViewContainerRef;
+    ghostLoaderTemplate: ViewContainerRef;
     get columnCssClasses(): any;
     get width(): number;
     get minWidth(): number;
@@ -64,5 +69,5 @@ export declare class DataTableBodyCellComponent implements DoCheck, OnDestroy {
     onTreeAction(): void;
     calcLeftMargin(column: any, row: any): number;
     static ɵfac: i0.ɵɵFactoryDeclaration<DataTableBodyCellComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<DataTableBodyCellComponent, "datatable-body-cell", never, { "displayCheck": "displayCheck"; "group": "group"; "rowHeight": "rowHeight"; "isSelected": "isSelected"; "expanded": "expanded"; "rowIndex": "rowIndex"; "column": "column"; "row": "row"; "sorts": "sorts"; "treeStatus": "treeStatus"; }, { "activate": "activate"; "treeAction": "treeAction"; }, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DataTableBodyCellComponent, "datatable-body-cell", never, { "displayCheck": { "alias": "displayCheck"; "required": false; }; "disable$": { "alias": "disable$"; "required": false; }; "group": { "alias": "group"; "required": false; }; "rowHeight": { "alias": "rowHeight"; "required": false; }; "isSelected": { "alias": "isSelected"; "required": false; }; "expanded": { "alias": "expanded"; "required": false; }; "rowIndex": { "alias": "rowIndex"; "required": false; }; "column": { "alias": "column"; "required": false; }; "row": { "alias": "row"; "required": false; }; "sorts": { "alias": "sorts"; "required": false; }; "treeStatus": { "alias": "treeStatus"; "required": false; }; "ghostLoadingIndicator": { "alias": "ghostLoadingIndicator"; "required": false; }; }, { "activate": "activate"; "treeAction": "treeAction"; }, never, never, false, never>;
 }

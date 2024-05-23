@@ -5,7 +5,7 @@ import { ValueGetter } from '../utils/column-prop-getters';
  * value from a row.
  * 'a.deep.value', 'normalprop', 0 (numeric)
  */
-export declare type TableColumnProp = string | number;
+export type TableColumnProp = string | number;
 /**
  * Column Type
  */
@@ -131,6 +131,12 @@ export interface TableColumn {
      * @memberOf TableColumn
      */
     cellTemplate?: any;
+    /**
+     * Ghost Cell template ref
+     *
+     * @memberOf TableColumn
+     */
+    ghostCellTemplate?: any;
     /**
      * Header template ref
      *

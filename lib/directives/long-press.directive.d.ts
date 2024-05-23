@@ -24,5 +24,5 @@ export declare class LongPressDirective implements OnDestroy {
     ngOnDestroy(): void;
     private _destroySubscription;
     static ɵfac: i0.ɵɵFactoryDeclaration<LongPressDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<LongPressDirective, "[long-press]", never, { "pressEnabled": "pressEnabled"; "pressModel": "pressModel"; "duration": "duration"; }, { "longPressStart": "longPressStart"; "longPressing": "longPressing"; "longPressEnd": "longPressEnd"; }, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<LongPressDirective, "[long-press]", never, { "pressEnabled": { "alias": "pressEnabled"; "required": false; }; "pressModel": { "alias": "pressModel"; "required": false; }; "duration": { "alias": "duration"; "required": false; }; }, { "longPressStart": "longPressStart"; "longPressing": "longPressing"; "longPressEnd": "longPressEnd"; }, never, never, false, never>;
 }

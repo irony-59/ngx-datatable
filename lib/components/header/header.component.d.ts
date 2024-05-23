@@ -1,4 +1,4 @@
-import { EventEmitter, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, EventEmitter, OnDestroy } from '@angular/core';
 import { SortType } from '../../types/sort.type';
 import { SelectionType } from '../../types/selection.type';
 import { DataTableColumnDirective } from '../columns/column.directive';
@@ -29,6 +29,7 @@ export declare class DataTableHeaderComponent implements OnDestroy {
     sort: EventEmitter<any>;
     reorder: EventEmitter<any>;
     resize: EventEmitter<any>;
+    resizing: EventEmitter<any>;
     select: EventEmitter<any>;
     columnContextmenu: EventEmitter<{
         event: MouseEvent;
@@ -41,7 +42,7 @@ export declare class DataTableHeaderComponent implements OnDestroy {
     _columns: any[];
     _headerHeight: string;
     _styleByGroup: {
-        [prop: string]: {};
+        [prop: string]: unknown;
     };
     private destroyed;
     constructor(cd: ChangeDetectorRef);
@@ -58,6 +59,8 @@ export declare class DataTableHeaderComponent implements OnDestroy {
     trackByGroups(index: number, colGroup: any): any;
     columnTrackingFn(index: number, column: any): any;
     onColumnResized(width: number, column: DataTableColumnDirective): void;
+    onColumnResizing(width: number, column: DataTableColumnDirective): void;
+    private makeResizeEvent;
     onColumnReordered({ prevIndex, newIndex, model }: any): void;
     onTargetChanged({ prevIndex, newIndex, initialIndex }: any): void;
     getColumn(index: number): any;
@@ -66,5 +69,5 @@ export declare class DataTableHeaderComponent implements OnDestroy {
     setStylesByGroup(): void;
     calcStylesByGroup(group: string): any;
     static ɵfac: i0.ɵɵFactoryDeclaration<DataTableHeaderComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<DataTableHeaderComponent, "datatable-header", never, { "sortAscendingIcon": "sortAscendingIcon"; "sortDescendingIcon": "sortDescendingIcon"; "sortUnsetIcon": "sortUnsetIcon"; "scrollbarH": "scrollbarH"; "dealsWithGroup": "dealsWithGroup"; "targetMarkerTemplate": "targetMarkerTemplate"; "innerWidth": "innerWidth"; "sorts": "sorts"; "sortType": "sortType"; "allRowsSelected": "allRowsSelected"; "selectionType": "selectionType"; "reorderable": "reorderable"; "headerHeight": "headerHeight"; "columns": "columns"; "offsetX": "offsetX"; }, { "sort": "sort"; "reorder": "reorder"; "resize": "resize"; "select": "select"; "columnContextmenu": "columnContextmenu"; }, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DataTableHeaderComponent, "datatable-header", never, { "sortAscendingIcon": { "alias": "sortAscendingIcon"; "required": false; }; "sortDescendingIcon": { "alias": "sortDescendingIcon"; "required": false; }; "sortUnsetIcon": { "alias": "sortUnsetIcon"; "required": false; }; "scrollbarH": { "alias": "scrollbarH"; "required": false; }; "dealsWithGroup": { "alias": "dealsWithGroup"; "required": false; }; "targetMarkerTemplate": { "alias": "targetMarkerTemplate"; "required": false; }; "innerWidth": { "alias": "innerWidth"; "required": false; }; "sorts": { "alias": "sorts"; "required": false; }; "sortType": { "alias": "sortType"; "required": false; }; "allRowsSelected": { "alias": "allRowsSelected"; "required": false; }; "selectionType": { "alias": "selectionType"; "required": false; }; "reorderable": { "alias": "reorderable"; "required": false; }; "headerHeight": { "alias": "headerHeight"; "required": false; }; "columns": { "alias": "columns"; "required": false; }; "offsetX": { "alias": "offsetX"; "required": false; }; }, { "sort": "sort"; "reorder": "reorder"; "resize": "resize"; "resizing": "resizing"; "select": "select"; "columnContextmenu": "columnContextmenu"; }, never, never, false, never>;
 }

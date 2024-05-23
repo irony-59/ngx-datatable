@@ -1,10 +1,10 @@
-import { EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, EventEmitter, OnInit } from '@angular/core';
 import { SortType } from '../../types/sort.type';
 import { SelectionType } from '../../types/selection.type';
 import { TableColumn } from '../../types/table-column.type';
 import { SortDirection } from '../../types/sort-direction.type';
 import * as i0 from "@angular/core";
-export declare class DataTableHeaderCellComponent {
+export declare class DataTableHeaderCellComponent implements OnInit {
     private cd;
     sortType: SortType;
     sortAscendingIcon: string;
@@ -48,5 +48,5 @@ export declare class DataTableHeaderCellComponent {
     onSort(): void;
     calcSortClass(sortDir: SortDirection): string;
     static ɵfac: i0.ɵɵFactoryDeclaration<DataTableHeaderCellComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<DataTableHeaderCellComponent, "datatable-header-cell", never, { "sortType": "sortType"; "sortAscendingIcon": "sortAscendingIcon"; "sortDescendingIcon": "sortDescendingIcon"; "sortUnsetIcon": "sortUnsetIcon"; "isTarget": "isTarget"; "targetMarkerTemplate": "targetMarkerTemplate"; "targetMarkerContext": "targetMarkerContext"; "allRowsSelected": "allRowsSelected"; "selectionType": "selectionType"; "column": "column"; "headerHeight": "headerHeight"; "sorts": "sorts"; }, { "sort": "sort"; "select": "select"; "columnContextmenu": "columnContextmenu"; }, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DataTableHeaderCellComponent, "datatable-header-cell", never, { "sortType": { "alias": "sortType"; "required": false; }; "sortAscendingIcon": { "alias": "sortAscendingIcon"; "required": false; }; "sortDescendingIcon": { "alias": "sortDescendingIcon"; "required": false; }; "sortUnsetIcon": { "alias": "sortUnsetIcon"; "required": false; }; "isTarget": { "alias": "isTarget"; "required": false; }; "targetMarkerTemplate": { "alias": "targetMarkerTemplate"; "required": false; }; "targetMarkerContext": { "alias": "targetMarkerContext"; "required": false; }; "allRowsSelected": { "alias": "allRowsSelected"; "required": false; }; "selectionType": { "alias": "selectionType"; "required": false; }; "column": { "alias": "column"; "required": false; }; "headerHeight": { "alias": "headerHeight"; "required": false; }; "sorts": { "alias": "sorts"; "required": false; }; }, { "sort": "sort"; "select": "select"; "columnContextmenu": "columnContextmenu"; }, never, never, false, never>;
 }

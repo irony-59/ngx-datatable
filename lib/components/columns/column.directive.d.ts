@@ -1,4 +1,4 @@
-import { TemplateRef, OnChanges } from '@angular/core';
+import { OnChanges, TemplateRef } from '@angular/core';
 import { ColumnChangesService } from '../../services/column-changes.service';
 import { TableColumnProp } from '../../types/table-column.type';
 import * as i0 from "@angular/core";
@@ -35,9 +35,12 @@ export declare class DataTableColumnDirective implements OnChanges {
     _treeToggleTemplateInput: TemplateRef<any>;
     _treeToggleTemplateQuery: TemplateRef<any>;
     get treeToggleTemplate(): TemplateRef<any>;
+    _ghostCellTemplateInput: TemplateRef<any>;
+    _ghostCellTemplateQuery: TemplateRef<any>;
+    get ghostCellTemplate(): TemplateRef<any>;
     private isFirstChange;
     constructor(columnChangesService: ColumnChangesService);
     ngOnChanges(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<DataTableColumnDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<DataTableColumnDirective, "ngx-datatable-column", never, { "name": "name"; "prop": "prop"; "frozenLeft": "frozenLeft"; "frozenRight": "frozenRight"; "flexGrow": "flexGrow"; "resizeable": "resizeable"; "comparator": "comparator"; "pipe": "pipe"; "sortable": "sortable"; "draggable": "draggable"; "canAutoResize": "canAutoResize"; "minWidth": "minWidth"; "width": "width"; "maxWidth": "maxWidth"; "checkboxable": "checkboxable"; "headerCheckboxable": "headerCheckboxable"; "headerClass": "headerClass"; "cellClass": "cellClass"; "isTreeColumn": "isTreeColumn"; "treeLevelIndent": "treeLevelIndent"; "summaryFunc": "summaryFunc"; "summaryTemplate": "summaryTemplate"; "_cellTemplateInput": "cellTemplate"; "_headerTemplateInput": "headerTemplate"; "_treeToggleTemplateInput": "treeToggleTemplate"; }, {}, ["_cellTemplateQuery", "_headerTemplateQuery", "_treeToggleTemplateQuery"]>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<DataTableColumnDirective, "ngx-datatable-column", never, { "name": { "alias": "name"; "required": false; }; "prop": { "alias": "prop"; "required": false; }; "frozenLeft": { "alias": "frozenLeft"; "required": false; }; "frozenRight": { "alias": "frozenRight"; "required": false; }; "flexGrow": { "alias": "flexGrow"; "required": false; }; "resizeable": { "alias": "resizeable"; "required": false; }; "comparator": { "alias": "comparator"; "required": false; }; "pipe": { "alias": "pipe"; "required": false; }; "sortable": { "alias": "sortable"; "required": false; }; "draggable": { "alias": "draggable"; "required": false; }; "canAutoResize": { "alias": "canAutoResize"; "required": false; }; "minWidth": { "alias": "minWidth"; "required": false; }; "width": { "alias": "width"; "required": false; }; "maxWidth": { "alias": "maxWidth"; "required": false; }; "checkboxable": { "alias": "checkboxable"; "required": false; }; "headerCheckboxable": { "alias": "headerCheckboxable"; "required": false; }; "headerClass": { "alias": "headerClass"; "required": false; }; "cellClass": { "alias": "cellClass"; "required": false; }; "isTreeColumn": { "alias": "isTreeColumn"; "required": false; }; "treeLevelIndent": { "alias": "treeLevelIndent"; "required": false; }; "summaryFunc": { "alias": "summaryFunc"; "required": false; }; "summaryTemplate": { "alias": "summaryTemplate"; "required": false; }; "_cellTemplateInput": { "alias": "cellTemplate"; "required": false; }; "_headerTemplateInput": { "alias": "headerTemplate"; "required": false; }; "_treeToggleTemplateInput": { "alias": "treeToggleTemplate"; "required": false; }; "_ghostCellTemplateInput": { "alias": "ghostCellTemplate"; "required": false; }; }, {}, ["_cellTemplateQuery", "_headerTemplateQuery", "_treeToggleTemplateQuery", "_ghostCellTemplateQuery"], never, false, never>;
 }

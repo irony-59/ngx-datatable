@@ -1,4 +1,4 @@
-import { ElementRef, EventEmitter, OnDestroy, AfterViewInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, ElementRef, EventEmitter, OnDestroy, Renderer2 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import * as i0 from "@angular/core";
 export declare class ResizeableDirective implements OnDestroy, AfterViewInit {
@@ -7,9 +7,9 @@ export declare class ResizeableDirective implements OnDestroy, AfterViewInit {
     minWidth: number;
     maxWidth: number;
     resize: EventEmitter<any>;
+    resizing: EventEmitter<any>;
     element: HTMLElement;
     subscription: Subscription;
-    resizing: boolean;
     private resizeHandle;
     constructor(element: ElementRef, renderer: Renderer2);
     ngAfterViewInit(): void;
@@ -19,5 +19,5 @@ export declare class ResizeableDirective implements OnDestroy, AfterViewInit {
     move(event: MouseEvent, initialWidth: number, mouseDownScreenX: number): void;
     private _destroySubscription;
     static ɵfac: i0.ɵɵFactoryDeclaration<ResizeableDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<ResizeableDirective, "[resizeable]", never, { "resizeEnabled": "resizeEnabled"; "minWidth": "minWidth"; "maxWidth": "maxWidth"; }, { "resize": "resize"; }, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ResizeableDirective, "[resizeable]", never, { "resizeEnabled": { "alias": "resizeEnabled"; "required": false; }; "minWidth": { "alias": "minWidth"; "required": false; }; "maxWidth": { "alias": "maxWidth"; "required": false; }; }, { "resize": "resize"; "resizing": "resizing"; }, never, never, false, never>;
 }
