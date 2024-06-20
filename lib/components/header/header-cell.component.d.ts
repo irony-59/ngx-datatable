@@ -33,6 +33,7 @@ export declare class DataTableHeaderCellComponent implements OnInit {
     get minWidth(): number;
     get maxWidth(): number;
     get width(): number;
+    get tabindex(): number;
     get isCheckboxable(): boolean;
     sortFn: any;
     sortClass: string;
@@ -43,6 +44,7 @@ export declare class DataTableHeaderCellComponent implements OnInit {
     private _sorts;
     constructor(cd: ChangeDetectorRef);
     onContextmenu($event: MouseEvent): void;
+    enter(): void;
     ngOnInit(): void;
     calcSortDir(sorts: any[]): any;
     onSort(): void;

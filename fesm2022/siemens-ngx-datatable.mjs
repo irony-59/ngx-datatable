@@ -4167,6 +4167,9 @@ class DataTableHeaderCellComponent {
     get width() {
         return this.column.width;
     }
+    get tabindex() {
+        return this.column.sortable ? 0 : -1;
+    }
     get isCheckboxable() {
         return this.column.headerCheckboxable;
     }
@@ -4187,6 +4190,9 @@ class DataTableHeaderCellComponent {
     }
     onContextmenu($event) {
         this.columnContextmenu.emit({ event: $event, column: this.column });
+    }
+    enter() {
+        this.onSort();
     }
     ngOnInit() {
         this.sortClass = this.calcSortClass(this.sortDir);
@@ -4225,7 +4231,7 @@ class DataTableHeaderCellComponent {
         }
     }
     static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.6", ngImport: i0, type: DataTableHeaderCellComponent, deps: [{ token: i0.ChangeDetectorRef }], target: i0.ɵɵFactoryTarget.Component }); }
-    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "17.0.6", type: DataTableHeaderCellComponent, selector: "datatable-header-cell", inputs: { sortType: "sortType", sortAscendingIcon: "sortAscendingIcon", sortDescendingIcon: "sortDescendingIcon", sortUnsetIcon: "sortUnsetIcon", isTarget: "isTarget", targetMarkerTemplate: "targetMarkerTemplate", targetMarkerContext: "targetMarkerContext", allRowsSelected: "allRowsSelected", selectionType: "selectionType", column: "column", headerHeight: "headerHeight", sorts: "sorts" }, outputs: { sort: "sort", select: "select", columnContextmenu: "columnContextmenu" }, host: { listeners: { "contextmenu": "onContextmenu($event)" }, properties: { "style.height.px": "this.headerHeight", "class": "this.columnCssClasses", "attr.title": "this.name", "style.minWidth.px": "this.minWidth", "style.maxWidth.px": "this.maxWidth", "style.width.px": "this.width" }, classAttribute: "datatable-header-cell" }, ngImport: i0, template: `
+    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "17.0.6", type: DataTableHeaderCellComponent, selector: "datatable-header-cell", inputs: { sortType: "sortType", sortAscendingIcon: "sortAscendingIcon", sortDescendingIcon: "sortDescendingIcon", sortUnsetIcon: "sortUnsetIcon", isTarget: "isTarget", targetMarkerTemplate: "targetMarkerTemplate", targetMarkerContext: "targetMarkerContext", allRowsSelected: "allRowsSelected", selectionType: "selectionType", column: "column", headerHeight: "headerHeight", sorts: "sorts" }, outputs: { sort: "sort", select: "select", columnContextmenu: "columnContextmenu" }, host: { listeners: { "contextmenu": "onContextmenu($event)", "keydown.enter": "enter()" }, properties: { "style.height.px": "this.headerHeight", "class": "this.columnCssClasses", "attr.title": "this.name", "style.minWidth.px": "this.minWidth", "style.maxWidth.px": "this.maxWidth", "style.width.px": "this.width", "tabindex": "this.tabindex" }, classAttribute: "datatable-header-cell" }, ngImport: i0, template: `
     <div class="datatable-header-cell-template-wrap">
       <ng-template
         *ngIf="isTarget"
@@ -4329,9 +4335,15 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.6", ngImpor
             }], width: [{
                 type: HostBinding,
                 args: ['style.width.px']
+            }], tabindex: [{
+                type: HostBinding,
+                args: ['tabindex']
             }], onContextmenu: [{
                 type: HostListener,
                 args: ['contextmenu', ['$event']]
+            }], enter: [{
+                type: HostListener,
+                args: ['keydown.enter']
             }] } });
 
 class DataTableHeaderComponent {
@@ -4839,21 +4851,6 @@ function scaleColumns(colsByGroup, maxWidth, totalFlexGrow) {
             }
         }
     } while (remainingWidth !== 0);
-    // Adjust for any remaining offset in computed widths vs maxWidth
-    const columns = Object.values(colsByGroup).reduce((acc, col) => acc.concat(col), []);
-    const totalWidthAchieved = columns.reduce((acc, col) => acc + col.width, 0);
-    const delta = maxWidth - totalWidthAchieved;
-    if (delta === 0) {
-        return;
-    }
-    // adjust the first column that can be auto-resized respecting the min/max widths
-    for (const col of columns.filter(c => c.canAutoResize).sort((a, b) => a.width - b.width)) {
-        if ((delta > 0 && (!col.maxWidth || col.width + delta <= col.maxWidth)) ||
-            (delta < 0 && (!col.minWidth || col.width + delta >= col.minWidth))) {
-            col.width += delta;
-            break;
-        }
-    }
 }
 /**
  * Forces the width of the columns to
